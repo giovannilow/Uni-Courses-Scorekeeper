@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Cardlist from './components/Cardlist';
+import SearchBox from './components/SearchBox'
+import { unis } from './components/unis';
+import Chart from './components/Chart';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+	constructor() {
+		super()
+		this.state = {
+			unis: unis,
+			searchfield: ''
+		}
+	}
+
+	onSearchChange = (event) => {
+		this.setState({ searchfield: event.target.value })
+	}
+
+	render() {
+		const filteredUnis = this.state.unis.filter(uni => {
+			return uni.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+		})
+		return (
+			<div className='tc'>
+				<h1>The University Entrance Calculator</h1>
+				<SearchBox searchChange={this.onSearchChange}/>
+				<Cardlist unis={filteredUnis}/>
+			</div>
+		)
+	}
 }
 
 export default App;
