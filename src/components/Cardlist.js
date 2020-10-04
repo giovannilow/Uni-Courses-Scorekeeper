@@ -6,14 +6,15 @@ const Cardlist = ({ unis }) => {
 	return (
 		<div>
 		  {
-		  	unis.map((major, i) => {
+		  	unis.map((courses, i) => {
 				return (
 					<Card 
 						key={i} 
 						id={unis[i].id} 
 						uni={unis[i].uni} 
 						name={unis[i].name} 
-						igp={unis[i].igp} 
+						igp={unis[i].igp[0]}
+						currentigp={unis[i].igp} 
 						gpa={unis[i].gpa} 
 						admit={unis[i].admit}
 					/>
