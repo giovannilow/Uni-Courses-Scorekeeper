@@ -11,21 +11,20 @@ class Chart extends Component{
 				datasets:[
 					 {
 					 	label: '10th Percentile IGP (Rank Points)',
-						data: {igp},
+						data: [85, 83.75 ,85 ,85 ,85 ,82.5, 75, 72.5, 76.25, 78.75],
 						backgroundColor: ['rbga(54, 162, 235, 0.6)']
 					}
 				]
 			}
 		}
 	}
-
 	render(){
 		return(
 			<div>
-				<p> {this.props.igp} </p>
+				<p> hi </p>
 				<Line 
 				data={this.state.chartData}
-				options={{ maintainAspectRatio: false }}
+				options={{ maintainAspectRatio: true }}
 				/>
 			</div>
 		)
