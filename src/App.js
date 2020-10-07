@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cardlist from './components/Cardlist';
-import SearchBox from './components/SearchBox'
+import SearchBox from './components/SearchBox';
+import Gpa_SearchBox from './components/gpa_SearchBox';
 import { unis } from './components/unis';
 import Chart from './components/Chart';
 
@@ -9,23 +10,32 @@ class App extends Component {
 		super()
 		this.state = {
 			unis: unis,
-			searchfield: ''
+			searchfield: '',
+			gpa_searchfield: ''
 		}
 	}
 
 	onSearchChange = (event) => {
 		this.setState({ searchfield: event.target.value })
-	}
+	};
+
+	onGpaChange = (event) => {
+		this.setState({ gpa_searchfield: Number(event.target.value) })
+	};
 
 	render() {
 		const filteredUnis = this.state.unis.filter(uni => {
 			return uni.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
 		})
+		const gpaFilteredUnis = this.state.unis.filter(uni => {
+			return uni.gpa.includes(this.state.gpa_searchfield);
+		})
 		return (
 			<div className='tc'>
 				<h1>The University Entrance Calculator</h1>
 				<SearchBox searchChange={this.onSearchChange}/>
-				<Cardlist unis={filteredUnis}/>
+				<Gpa_SearchBox gpa_searchChange={this.onGpaChange}/>
+				<Cardlist unis={ filteredUnis, gpaFilteredUnis }/>
 			</div>
 		)
 	}
