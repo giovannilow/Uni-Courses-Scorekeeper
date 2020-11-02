@@ -27,15 +27,14 @@ class App extends Component {
 		const filteredUnis = this.state.unis.filter(uni => {
 			return uni.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
 		})
-		const gpaFilteredUnis = this.state.unis.filter(uni => {
-			return uni.gpa.includes(this.state.gpa_searchfield);
-		})
+		
+		
 		return (
 			<div className='tc'>
 				<h1>The University Entrance Calculator</h1>
 				<SearchBox searchChange={this.onSearchChange}/>
 				<Gpa_SearchBox gpa_searchChange={this.onGpaChange}/>
-				<Cardlist unis={ filteredUnis, gpaFilteredUnis }/>
+				<Cardlist unis={ filteredUnis }/>
 			</div>
 		)
 	}
