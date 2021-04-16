@@ -14,7 +14,7 @@ const Cardlist = ({ unis }) => {
 						uni={unis[i].uni} 
 						name={unis[i].name} 
 						igp={unis[i].igp[i]}
-						currentigp={unis[i].igp}
+						currentigp={unis[i].igp[0]}
 						gpa={unis[i].gpa} 
 						admit={unis[i].admit}
 					/>
